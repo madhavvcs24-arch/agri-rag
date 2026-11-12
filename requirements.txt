@@ -1,6 +1,32 @@
 
+# PDF processing
 PyMuPDF==1.24.14
 pypdf==5.1.0
+
+# LangChain components used in the project
 langchain-community==0.3.14
 langchain-core==0.3.29
+
+# Configuration
 python-dotenv==1.0.1
+
+# Numerical computing and vector search
+numpy==2.5.4
+faiss-cpu==1.16.0
+
+# Hybrid retrieval
+rank-bm25==0.2.2
+
+# Embeddings and reranking
+sentence-transformers==6.3.0
+torch==2.15.0
+transformers==5.22.2
+
+# Local LLM integration
+ollama==0.6.3
+
+# Web interface
+gradio==6.31.0
+
+# Data handling and reports
+pandas==3.1.1

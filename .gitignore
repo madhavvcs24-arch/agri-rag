@@ -8,3 +8,9 @@ data/raw/*
 data/processed/*
 !data/processed/.gitkeep
 .pytest_cache/
+# Local databases
+*.db
+
+# Local environment files
+.env.*
+!.env.example

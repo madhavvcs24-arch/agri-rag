@@ -4,9 +4,9 @@ import csv
 from pathlib import Path
 
 
-INPUT_FILE = Path("data/processed/pages.jsonl")
-OUTPUT_FILE = Path("data/processed/pages_with_state.jsonl")
-REPORT_FILE = Path("data/processed/state_report.csv")
+INPUT_PATH = Path("data/processed/pages_v2.jsonl")
+OUTPUT_PATH = Path("data/processed/pages_with_state_v2.jsonl")
+REPORT_PATH = Path("data/processed/state_report_v2.csv")
 
 FIRST_ADVISORY_PAGE = 17
 LAST_ADVISORY_PAGE = 307
@@ -72,10 +72,10 @@ def add_state_metadata():
     unassigned_pages = []
     state_counts = {}
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(INPUT_FILE, "r", encoding="utf-8") as infile, \
-         open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
+    with open(INPUT_PATH, "r", encoding="utf-8") as infile, \
+         open(OUTPUT_PATH, "w", encoding="utf-8") as outfile:
 
         for line in infile:
             record = json.loads(line)
@@ -110,7 +110,7 @@ def add_state_metadata():
                 state_counts.get(current_state, 0) + 1
             )
 
-    with open(REPORT_FILE, "w", newline="", encoding="utf-8") as report:
+    with open(REPORT_PATH, "w", newline="", encoding="utf-8") as report:
         writer = csv.writer(report)
         writer.writerow(["state", "number_of_pages"])
 
@@ -129,8 +129,8 @@ def add_state_metadata():
         print(f"{state}: {count}")
 
     print("\nUnassigned PDF pages:", unassigned_pages)
-    print("\nOutput:", OUTPUT_FILE)
-    print("Report:", REPORT_FILE)
+    print("\nOutput:", OUTPUT_PATH)
+    print("Report:", REPORT_PATH)
 
 
 if __name__ == "__main__":
